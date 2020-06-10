@@ -1,49 +1,53 @@
 let body = document.querySelector('body');
-body.setAttribute('style','color: Blue');
-
+let newButton2 = document.createElement('button');
 let newButton = document.createElement('button');
-body.appendChild(newButton)
-newButton.innerHTML = "Click"; 
-
 let i = 0;
 
-function ButtonClicked(){
-    console.log('hit');
-    //alert("Great, you clicked the button!");
 
+
+body.appendChild(newButton)
+body.appendChild(newButton2)
+body.setAttribute('style','color: Blue');
+newButton.innerHTML = "Click"; 
+newButton2.innerHTML = "Unclick"; 
+
+
+newButton.addEventListener('click',ButtonClicked);
+newButton2.addEventListener('click',UnclickButtonClicked);
+
+
+    function ButtonClicked(){
     let newHeader = document.createElement('h2')
     newHeader.innerHTML = "Deep Sea Blue";
     newHeader.setAttribute('id', i);
     body.appendChild(newHeader);
+    i++;
+}
+
+
+    function UnclickButtonClicked(){
+    let toDelete = document.getElementById(i - 1);
+    console.log(toDelete);
+    body.removeChild(toDelete);
+    i--;
+}
+
+
+function removeButtonClicked(){
+    let toDelete = document.getElementById(i - 1);
     
-    console.log(newHeader);
-}
+    if(toDelete !== null){
+    console.log(toDelete);
+    
+    body.removeChild(toDelete);
+    
+    i--;
+    } else {
+    window.alert('Nothing to delete');
+    }
+   }
 
 
 
-
-newButton.addEventListener('click',ButtonClicked);
-
-let newButton2 = document.createElement('button');
-body.appendChild(newButton2)
-newButton2.innerHTML = "Unclick"; 
-
-
-function UnclickButtonClicked(){
-    //console.log('hit');
-    //alert("Great, you clicked the button!");
-
-    let newHeader = document.createElement('h2')
-    newHeader.innerHTML = "Deep Sea Blue";
-    newHeader.setAttribute('id',i);
-    body.appendChild(newHeader);
-
-    console.log(newHeader);
-}
-
-
-
-
-newButton2.addEventListener('click',UnclickButtonClicked);
 
 console.log(body);
